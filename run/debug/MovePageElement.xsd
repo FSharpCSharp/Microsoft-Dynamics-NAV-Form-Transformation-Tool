@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" targetNamespace="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:NS="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects">
+  <xs:element name="MovePageElements">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Page">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ElementToType">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="destinationType" type="PageDesinationType" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="FixedLayout">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="Name" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="PromotedField">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="Name" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalField">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="Name" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ElementToID">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="destinationID" type="xs:integer" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="InstructionalTextML">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="Name" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="TabControlNewIDs">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required" />
+                  <xs:attribute name="PageNameML" type="xs:string" use="required" />
+                  <xs:attribute name="NewID" type="xs:integer" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:integer" use="required" />
+            <xs:attribute name="Name" type="xs:string" use="required" />
+            <xs:attribute name="NewName" type="xs:string" use="optional" />
+            <xs:attribute name="CaptionML" type="xs:string" />
+            <xs:attribute name="destinationType" type="ActionDestination" />
+            <xs:attribute name="OptionCaptionML" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="PageDesinationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NewDocumentItems" />
+      <xs:enumeration value="ActionItems" />
+      <xs:enumeration value="ActionPrint" />
+      <xs:enumeration value="Transactions" />
+      <xs:enumeration value="TransactionsDocuments" />
+      <xs:enumeration value="TransactionsStatistics" />
+      <xs:enumeration value="Reports" />
+      <xs:enumeration value="HomeItems" />
+      <xs:enumeration value="ActivityButtons" />
+      <xs:enumeration value="ContentAreaControls" />
+      <xs:enumeration value="InfoParts" />
+      <xs:enumeration value="OverviewParts" />
+      <xs:enumeration value="HomeParts" />
+      <xs:enumeration value="MatrixLikeLayout" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ActionDestination">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NewDocumentItems" />
+      <xs:enumeration value="ActionItems" />
+      <xs:enumeration value="ActionPrint" />
+      <xs:enumeration value="Transactions" />
+      <xs:enumeration value="TransactionsDocuments" />
+      <xs:enumeration value="TransactionsStatistics" />
+      <xs:enumeration value="Reports" />
+      <xs:enumeration value="HomeItems" />
+      <xs:enumeration value="ActivityButtons" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

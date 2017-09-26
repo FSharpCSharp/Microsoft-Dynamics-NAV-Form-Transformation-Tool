@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects"
+           targetNamespace="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects"
+           elementFormDefault="qualified"
+           xmlns:appObj="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="MovePages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="Page">
+					<xs:complexType>
+						<xs:attribute name="ID" type="xs:integer" use="required" />
+						<xs:attribute name="Name" type="xs:string" use="optional" />
+						<xs:attribute name="destinationID" type="xs:integer" use="required" />
+						<xs:attribute name="destinationName" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

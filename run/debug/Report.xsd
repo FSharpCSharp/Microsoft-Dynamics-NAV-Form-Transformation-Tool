@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" elementFormDefault="qualified">
+	<xs:include schemaLocation="Common.xsd"/>
+	<xs:include schemaLocation="Form.xsd"/>
+	<xs:include schemaLocation="Page.xsd"/>
+	<xs:element name="Report" type="ReportType"/>
+	<xs:complexType name="ReportType">
+		<xs:all>
+			<xs:element name="Properties" type="ReportPropertiesType" maxOccurs="1"/>
+			<xs:element name="Triggers" type="ReportTriggersType"  maxOccurs="1"/>
+			<xs:element name="DataItems" type="DataItemsType" maxOccurs="1"/>
+			<xs:element name="RequestForm" type="RequestFormType" maxOccurs="1"/>
+			<xs:element name="Code" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Layout" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RequestPage" type="RequestPageType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RDLData" type="xs:string" maxOccurs="1"/>
+		</xs:all>
+		<xs:attributeGroup ref="ObjectAttributes"/>
+	</xs:complexType>
+	<xs:complexType name="RequestPageType">
+		<xs:all>
+			<xs:element name="Properties" type="PagePropertiesType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SourceObject" type="PageSourceObjectType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Triggers" type="PageTriggersType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Actions" type="PageActionsType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Controls" type="PageControlsType" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ReportPropertiesType">
+		<xs:all>
+			<xs:element name="Caption" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ShowPrintStatus" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UseReqForm" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UseSystemPrinter" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ProcessingOnly" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TransactionType" type="TransactionTypeType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TopMargin" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BottomMargin" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LeftMargin" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RightMargin" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HorzGrid" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="VertGrid" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Permissions" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Orientation" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Portrait"/>
+						<xs:enumeration value="Landscape"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PaperSize" type="PaperSizeType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PaperSourceFirstPage" type="PaperSourceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PaperSourceOtherPages" type="PaperSourceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DeviceFontName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="PaperSizeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Letter 8 1/2 x 11 in"/>
+			<xs:enumeration value="Letter Small 8 1/2 x 11 in"/>
+			<xs:enumeration value="Tabloid 11 x 17 in"/>
+			<xs:enumeration value="Ledger 17 x 11 in"/>
+			<xs:enumeration value="Legal 8 1/2 x 14 in"/>
+			<xs:enumeration value="Statement 5 1/2 x 8 1/2 in"/>
+			<xs:enumeration value="Executive 7 1/4 x 10 1/2 in"/>
+			<xs:enumeration value="A3 297 x 420 mm"/>
+			<xs:enumeration value="A4 210 x 297 mm"/>
+			<xs:enumeration value="A4 Small 210 x 297 mm"/>
+			<xs:enumeration value="A5 148 x 210 mm"/>
+			<xs:enumeration value="B4 (JIS) 250 x 354"/>
+			<xs:enumeration value="B5 (JIS) 182 x 257 mm"/>
+			<xs:enumeration value="Folio 8 1/2 x 13 in"/>
+			<xs:enumeration value="Quarto 215 x 275 mm"/>
+			<xs:enumeration value="10 x 14 in"/>
+			<xs:enumeration value="11 x 17 in"/>
+			<xs:enumeration value="Note 8 1/2 x 11 in"/>
+			<xs:enumeration value="Envelope #9 3 7/8 x 8 7/8"/>
+			<xs:enumeration value="Envelope #10 4 1/8 x 9 1/2"/>
+			<xs:enumeration value="Envelope #11 4 1/2 x 10 3/8"/>
+			<xs:enumeration value="Envelope #12 4 \276 x 11"/>
+			<xs:enumeration value="Envelope #14 5 x 11 1/2"/>
+			<xs:enumeration value="C size sheet"/>
+			<xs:enumeration value="D size sheet"/>
+			<xs:enumeration value="E size sheet"/>
+			<xs:enumeration value="Envelope DL 110 x 220mm"/>
+			<xs:enumeration value="Envelope C5 162 x 229 mm"/>
+			<xs:enumeration value="Envelope C3 324 x 458 mm"/>
+			<xs:enumeration value="Envelope C4 229 x 324 mm"/>
+			<xs:enumeration value="Envelope C6 114 x 162 mm"/>
+			<xs:enumeration value="Envelope C65 114 x 229 mm"/>
+			<xs:enumeration value="Envelope B4 250 x 353 mm"/>
+			<xs:enumeration value="Envelope B5 176 x 250 mm"/>
+			<xs:enumeration value="Envelope B6 176 x 125 mm"/>
+			<xs:enumeration value="Envelope 110 x 230 mm"/>
+			<xs:enumeration value="Envelope Monarch 3.875 x 7.5 in"/>
+			<xs:enumeration value="6 3/4 Envelope 3 5/8 x 6 1/2 in"/>
+			<xs:enumeration value="US Std. Fanfold 14 7/8 x 11 in"/>
+			<xs:enumeration value="German Std. Fanfold 8 1/2 x 12 in"/>
+			<xs:enumeration value="German Legal Fanfold 8 1/2 x 13 in"/>
+			<xs:enumeration value="B4 (ISO) 250 x 353 mm"/>
+			<xs:enumeration value="Japanese Postcard 100 x 148 mm"/>
+			<xs:enumeration value="9 x 11 in"/>
+			<xs:enumeration value="10 x 11 in"/>
+			<xs:enumeration value="15 x 11 in"/>
+			<xs:enumeration value="Envelope Invite 220 x 220 mm"/>
+			<xs:enumeration value="Letter Extra 9 \275 x 12 in"/>
+			<xs:enumeration value="Legal Extra 9 \275 x 15 in"/>
+			<xs:enumeration value="Tabloid Extra 11.69 x 18 in"/>
+			<xs:enumeration value="A4 Extra 9.27 x 12.69 in"/>
+			<xs:enumeration value="Letter Transverse 8 \275 x 11 in"/>
+			<xs:enumeration value="A4 Transverse 210 x 297 mm"/>
+			<xs:enumeration value="Letter Extra Transverse 9\275 x 12 in"/>
+			<xs:enumeration value="SuperA/SuperA/A4 227 x 356 mm"/>
+			<xs:enumeration value="SuperB/SuperB/A3 305 x 487 mm"/>
+			<xs:enumeration value="Letter Plus 8.5 x 12.69 in"/>
+			<xs:enumeration value="A4 Plus 210 x 330 mm"/>
+			<xs:enumeration value="A5 Transverse 148 x 210 mm"/>
+			<xs:enumeration value="B5 (JIS) Transverse 182 x 257 mm"/>
+			<xs:enumeration value="A3 Extra 322 x 445 mm"/>
+			<xs:enumeration value="A5 Extra 174 x 235 mm"/>
+			<xs:enumeration value="B5 (ISO) Extra 201 x 276 mm"/>
+			<xs:enumeration value="A2 420 x 594 mm"/>
+			<xs:enumeration value="A3 Transverse 297 x 420 mm"/>
+			<xs:enumeration value="A3 Extra Transverse 322 x 445 mm"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PaperSourceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Upper or Only One Feed"/>
+			<xs:enumeration value="Lower Feed"/>
+			<xs:enumeration value="Middle Feed"/>
+			<xs:enumeration value="Manual Feed"/>
+			<xs:enumeration value="Envelope Feed"/>
+			<xs:enumeration value="Envelope Manual Feed"/>
+			<xs:enumeration value="Automatic Feed"/>
+			<xs:enumeration value="Tractor Feed"/>
+			<xs:enumeration value="Small-format Feed"/>
+			<xs:enumeration value="Large-format Feed"/>
+			<xs:enumeration value="Large-capacity Feed"/>
+			<xs:enumeration value="Cassette Feed"/>
+			<xs:enumeration value="Automatically Select"/>
+			<xs:enumeration value="Printer Specific Feed 1"/>
+			<xs:enumeration value="Printer Specific Feed 2"/>
+			<xs:enumeration value="Printer Specific Feed 3"/>
+			<xs:enumeration value="Printer Specific Feed 4"/>
+			<xs:enumeration value="Printer Specific Feed 5"/>
+			<xs:enumeration value="Printer Specific Feed 6"/>
+			<xs:enumeration value="Printer Specific Feed 7"/>
+			<xs:enumeration value="Printer Specific Feed 8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ReportTriggersType">
+		<xs:all>
+			<xs:element name="OnCreateHyperlink" type="xs:string" minOccurs="0"/>
+			<xs:element name="OnHyperlink" type="xs:string" minOccurs="0"/>
+			<xs:element name="OnPreReport" type="xs:string" minOccurs="0"/>
+			<xs:element name="OnInitReport" type="xs:string" minOccurs="0"/>
+			<xs:element name="OnPostReport" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="DataItemsType">
+		<xs:sequence>
+			<xs:element name="DataItem" type="DataItemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataItemType">
+		<xs:all>
+			<xs:element name="Properties" type="DataItemPropertiesType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Sections" type="ReportSectionsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Triggers" type="DataItemTriggersType" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ReportSectionsType">
+		<xs:sequence>
+			<xs:element name="Section" type="ReportSectionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataItemPropertiesType">
+		<xs:all>
+			<xs:element name="DataItemIndent" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DataItemTable" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DataItemTableView" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DataItemLinkReference" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DataItemLink" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NewPagePerGroup" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NewPagePerRecord" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ReqFilterHeading" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ReqFilterHeadingML" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TotalFields" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="GroupTotalFields" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CalcFields" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MaxIteration" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DataItemVarName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PrintOnlyIfDetail" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ReqFilterFields" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ReportSectionType">
+		<xs:all>
+			<xs:element name="Properties" type="SectionPropertiesType" minOccurs="0"/>
+			<xs:element name="Triggers" type="SectionTriggersType" minOccurs="0"/>
+			<xs:element name="Controls" type="ReportSectionControlsType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ReportSectionControlsType">
+		<xs:sequence>
+			<xs:element name="Control" type="ReportSectionControlType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReportSectionControlType">
+		<xs:all>
+			<xs:element name="Properties" type="ReportSectionControlPropertiesType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ReportSectionControlPropertiesType">
+		<xs:all>
+			<xs:element name="ID" type="xs:string" minOccurs="0"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="Visible" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="ForeColor" type="xs:nonNegativeInteger" minOccurs="0"/>
+			<xs:element name="BackColor" type="xs:nonNegativeInteger" minOccurs="0"/>
+			<xs:element name="LeaderDots" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="BlankZero" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="BlankNumbers" type="xs:string" minOccurs="0"/>
+			<xs:element name="DecimalPlaces" type="xs:string" minOccurs="0"/>
+			<xs:element name="AutoFormatType" type="xs:integer" minOccurs="0"/>
+			<xs:element name="AutoFormatExpr" type="xs:string" minOccurs="0"/>
+			<xs:element name="OptionCaptionML" type="xs:string" minOccurs="0"/>
+			<xs:element name="PadChar" type="xs:string" minOccurs="0"/>
+			<xs:element name="Format" type="xs:string" minOccurs="0"/>
+			<xs:element name="Controltype" type="xs:string" minOccurs="0"/>
+			<xs:element name="AutoCalcField" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="PasswordText" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="FontItalic" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="FontUnderline" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="FontName" type="xs:string" minOccurs="0"/>
+			<xs:element name="Border" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="BorderWidth" type="xs:string" minOccurs="0"/>
+			<xs:element name="ShapeStyle" type="xs:string" minOccurs="0"/>
+			<xs:element name="Divisor" type="xs:integer" minOccurs="0"/>
+			<xs:element name="CaptionClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="OptionString" type="xs:string" minOccurs="0"/>
+			<xs:element name="HorzGlue" type="xs:string" minOccurs="0"/>
+			<xs:element name="Enabled" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="XPos" type="xs:string" minOccurs="0"/>
+			<xs:element name="YPos" type="xs:string" minOccurs="0"/>
+			<xs:element name="Width" type="xs:string" minOccurs="0"/>
+			<xs:element name="Height" type="xs:string" minOccurs="0"/>
+			<xs:element name="FontSize" type="xs:string" minOccurs="0"/>
+			<xs:element name="FontBold" type="NavBoolType" minOccurs="0"/>
+			<xs:element name="CaptionML" type="xs:string" minOccurs="0"/>
+			<xs:element name="HorzAlign" type="xs:string" minOccurs="0"/>
+			<xs:element name="VertAlign" type="xs:string" minOccurs="0"/>
+			<xs:element name="MultiLine" type="xs:string" minOccurs="0"/>
+			<xs:element name="SourceExpr" type="xs:string" minOccurs="0"/>
+			<xs:element name="ParentControl" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="SectionPropertiesType">
+		<xs:all>
+			<xs:element name="SectionType" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Header"/>
+						<xs:enumeration value="GroupHeader"/>
+						<xs:enumeration value="TransHeader"/>
+						<xs:enumeration value="Body"/>
+						<xs:enumeration value="TransFooter"/>
+						<xs:enumeration value="GroupFooter"/>
+						<xs:enumeration value="Footer"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SectionWidth" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SectionHeight" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="KeepWithNext" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PrintOnEveryPage" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PlaceInBottom" type="NavBoolType" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="SectionTriggersType">
+		<xs:all>
+			<xs:element name="OnPreSection" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OnPostSection" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="DataItemTriggersType">
+		<xs:all>
+			<xs:element name="OnPreDataItem" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OnAfterGetRecord" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OnPostDataItem" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="RequestFormType">
+		<xs:all>
+			<xs:element name="Properties" type="FormPropertiesType" maxOccurs="1"/>
+			<xs:element name="Triggers" type="FormTriggersType" maxOccurs="1"/>
+			<xs:element name="Controls" type="FormControlsType" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" elementFormDefault="qualified">
+	<xs:include schemaLocation="Form.xsd"/>
+	<xs:include schemaLocation="Page.xsd"/>
+	<xs:include schemaLocation="Report.xsd"/>
+	<xs:element name="Objects" type="ObjectsType"/>
+	<xs:complexType name="ObjectsType">
+		<xs:sequence>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="Form" type="FormType"/>
+				<xs:element name="Page" type="PageType"/>
+				<xs:element name="Report" type="ReportType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

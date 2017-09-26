@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects"
+		   targetNamespace="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="NavBoolType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Yes"/>
+			<xs:enumeration value="No"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attributeGroup name="ObjectAttributes">
+		<xs:attribute name="ID" type="xs:integer" use="required"/>
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="Date" type="xs:date" use="optional"/>
+		<xs:attribute name="Time" type="xs:time" use="optional"/>
+		<xs:attribute name="Modified" type="xs:string"/>
+		<xs:attribute name="VersionList" type="xs:string"/>
+	</xs:attributeGroup>
+	<xs:simpleType name="PageTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Card" />
+			<xs:enumeration value="List" />
+			<xs:enumeration value="RoleCenter" />
+			<xs:enumeration value="CardPart" />
+			<xs:enumeration value="ListPart" />
+			<xs:enumeration value="Document" />
+			<xs:enumeration value="Worksheet" />
+			<xs:enumeration value="ListPlus" />
+			<xs:enumeration value="ConfirmationDialog" />
+			<xs:enumeration value="RequestForm" />
+      <xs:enumeration value="ReportPreview" />
+      <xs:enumeration value="BatchJob" />
+      <xs:enumeration value="NavigatePage" />
+    </xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name ="TransactionTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UpdateNoLocks" />
+			<xs:enumeration value="Update" />
+			<xs:enumeration value="Snapshot" />
+			<xs:enumeration value="Browse" />
+			<xs:enumeration value="Report" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GUID">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name ="DataTypeType">
+		<xs:restriction base ="xs:string">
+			<xs:enumeration value="Integer"/>
+			<xs:enumeration value="Text"/>
+			<xs:enumeration value="TextConst"/>
+			<xs:enumeration value="Code"/>
+			<xs:enumeration value="Decimal"/>
+			<xs:enumeration value="Option"/>
+			<xs:enumeration value="Boolean"/>
+			<xs:enumeration value="Date"/>
+			<xs:enumeration value="Time"/>
+			<xs:enumeration value="Binary"/>
+			<xs:enumeration value="BLOB"/>
+			<xs:enumeration value="DateFormula"/>
+			<xs:enumeration value="TableFilter"/>
+			<xs:enumeration value="BigInteger"/>
+			<xs:enumeration value="Duration"/>
+			<xs:enumeration value="GUID"/>
+			<xs:enumeration value="RecordID"/>
+			<xs:enumeration value="DateTime"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

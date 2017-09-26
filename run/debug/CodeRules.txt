@@ -1,0 +1,1649 @@
+<find>
+RequestOptionsForm.
+<replace>
+RequestOptionsForm.
+<isReport>
+Yes
+
+<find>
+VAR
+;
+<replace>
+;
+
+<find>
+;;
+<replace>
+;
+
+<find>
+OF !var!::!var!:;
+<replace>
+OF 
+
+<find>
+THEN BEGIN END;
+<replace>
+THEN;
+
+<find>
+END ELSE;
+<replace>
+END;
+
+<find>
+ELSE BEGIN END;
+<replace>
+ELSE;
+
+<find>
+ELSE BEGIN END;
+<replace>
+ELSE;
+
+<find>
+CASE !var! OF
+END;
+<replace>
+;
+
+<find>
+CASE ELSE
+<replace>
+IF TRUE THEN BEGIN 
+
+<find>
+BEGIN;
+<replace>
+BEGIN
+
+<find>
+IF !var1! <> !var1!::!var! THEN;
+<replace>
+;
+
+<find>
+IF !var1! = !var1!::!var! THEN;
+<replace>
+;
+
+<find>
+IF !var1! = !var1!::!var2! THEN BEGIN END ELSE
+<replace>
+IF !var1! <> !var1!::!var2! THEN 
+
+<find>
+IF !var1! = !var1!::!var! THEN BEGIN END
+<replace>
+;
+<comment>
+This find relies on the previous find.
+
+<find>
+IF (WORKDATE <> !var1!) AND (!var1! <> 0D) THEN;
+<replace>
+;
+
+<find>
+IF (!var1! = !var2!::!var3!) THEN
+<replace>
+IF !var1! = !var2!::!var3! THEN
+
+<find>
+IF (!var1! = !var1!::!var!) AND (!var2! <> xRec.!var2!) AND
+   (xRec.!var! <> '')
+THEN;
+<replace>
+;
+
+<find>
+LookupAvailable(0);
+<atTrigger>
+OnPush
+<replace>
+;
+<movePropertyToControlName>
+61
+<moveToTrigger>
+OnDrillDown
+<moveCodeToTrigger>
+LookupAvailable(0);
+
+<find>
+LookupAvailable(1);
+<atTrigger>
+OnPush
+<replace>
+;
+<movePropertyToControlName>
+56
+<moveToTrigger>
+OnDrillDown
+<moveCodeToTrigger>
+LookupAvailable(1);
+
+<find>
+BEGIN
+  Transparency.SetCurrReqLine(Rec);
+  Transparency.DrillDownUntrackedQty('');  
+END;
+<atTrigger>
+OnPush
+<declareVariable>
+PlanningTransparency
+<declareVariableType>
+Codeunit 99000856
+<replace>
+;
+<movePropertyToControlName>
+!control!
+<moveToTrigger>
+OnDrillDown
+<moveCodeToTrigger>
+PlanningTransparency.SetCurrReqLine(Rec);
+PlanningTransparency.DrillDownUntrackedQty('');  
+
+<find>
+BEGIN
+  EXIT(Transparency.ReqLineWarningLevel(Rec));
+END;
+<replace>
+BEGIN
+  Warning := Transparency.ReqLineWarningLevel(Rec);
+END;
+<movePropertyToControlName>
+118
+<moveToTrigger>
+OnFormat
+<moveCodeToTrigger>
+PlanningWarningLevel;
+**This is temporary**;
+<declareVariable>
+Warning
+<declareVariableType>
+',Emergency,Exception,Attention'
+<moveToProperty>
+SourceExpr
+<moveValueToProperty>
+Warning
+
+<find>
+PlanningWarningLevel;
+**This is temporary**;
+<replace>
+PlanningWarningLevel;
+<movePropertyToControlName>
+118
+<moveToProperty>
+OptionCaptionML
+<moveValueToProperty>
+ENU=" ,Emergency,Exception,Attention"
+
+<find>
+PictureExists := Picture.HASVALUE;
+IF Picture.IMPORT('*.BMP',TRUE) = '' THEN
+  EXIT;
+IF PictureExists THEN
+  IF NOT CONFIRM(Text001,FALSE) THEN
+    EXIT;
+!currForm!.SAVERECORD;
+<replace>
+;
+
+<find>
+PictureExists := Picture.HASVALUE;
+IF Picture.IMPORT('*.BMP',TRUE) = '' THEN
+  EXIT;
+IF PictureExists THEN
+  IF NOT CONFIRM(Text001,FALSE,TABLECAPTION,"No.") THEN
+    EXIT;
+!currForm!.SAVERECORD;
+<replace>
+;
+
+<find>
+IF Picture.HASVALUE THEN
+  Picture.EXPORT('*.BMP',TRUE);
+<replace>
+;
+
+<find>
+IF Picture.HASVALUE THEN
+  IF CONFIRM(Text002,FALSE,TABLECAPTION,"No.") THEN BEGIN
+    CLEAR(Picture);
+    !currForm!.SAVERECORD;
+  END;
+<replace>
+;
+
+<find>
+IF Picture.HASVALUE THEN
+  IF CONFIRM(Text002,FALSE) THEN BEGIN
+    CLEAR(Picture);
+    !currForm!.SAVERECORD;
+  END;
+<replace>
+;
+
+<find>
+IF Code = '' THEN;
+<atTrigger>
+OnActivate
+<replace>
+;
+
+<find>
+BEGIN
+  SETRANGE(!var!);
+<atTrigger>
+OnAfterGetRecord
+<replace>
+BEGIN 
+
+<find>
+RESET;
+IF NOT GET THEN 
+  INSERT;
+<atTrigger>
+OnOpenForm
+<replace>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT;
+END;
+
+
+<find>
+RESET;
+IF NOT GET THEN 
+  INSERT(TRUE);
+<atTrigger>
+OnOpenForm
+<replace>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT;
+END;
+
+<find>
+RESET;
+INIT;
+IF NOT GET THEN 
+  INSERT;
+<atTrigger>
+OnOpenForm
+<replace>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT;
+END;
+
+<find>
+RESET;
+IF NOT GET THEN 
+  INSERT;
+<atTrigger>
+OnOpenForm
+<replace>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT;
+END;
+
+<find>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT(TRUE);
+END;
+<atTrigger>
+OnOpenForm
+<replace>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT;
+END;
+
+<find>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  !var! := TRUE;
+  !var! := TRUE;
+  INSERT;
+END;
+<atTrigger>
+OnOpenForm
+<replace>
+RESET;
+IF NOT GET THEN BEGIN
+  INIT;
+  INSERT;
+END;
+
+<find>
+IF FIND(Which) THEN
+  EXIT(TRUE)
+ELSE BEGIN
+  SETRANGE("No.");
+  EXIT(FIND(Which));
+END;
+<atTrigger>
+OnFindRecord
+<replace>
+;
+
+<find>
+BEGIN
+  RecordFound := FIND(Which);
+  !currForm!.EDITABLE := RecordFound OR (GETFILTER("No.") = '');
+  EXIT(RecordFound);
+END;
+<atTrigger>
+OnOpenForm
+<replace>
+BEGIN
+END;
+
+<find>
+BEGIN
+  !currForm!.EDITABLE(GETFILTER("Contact No.") <> '''''');
+  EXIT(FIND(Which));
+END;
+<atTrigger>
+OnFindRecord
+<replace>
+BEGIN
+END;
+
+<find>
+IF GetActualSortMethod = SortMethod::"Shelf/Bin No." THEN;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+<find>
+IF (Level = 0) OR (ActualExpansionStatus < 2) THEN;
+<atTrigger>
+OnFormat
+<replace>
+;
+
+<find>
+Text := '';
+<declareVariable>
+!control!HideValue
+<declareVariableType>
+Boolean INDATASET
+<replace>
+!declaredVariable! := TRUE;
+<moveValueToProperty>
+!declaredVariable!
+<movePropertyToControlName>
+!control!
+<atTrigger>
+OnFormat
+<moveToProperty>
+HideValue
+
+<find>
+IF !var1! = 0 THEN BEGIN
+  !currForm!.!var2!.EDITABLE := FALSE;
+  !currForm!.!var2!.VISIBLE := FALSE;
+  !currForm!.!var3!.EDITABLE := TRUE;
+  !currForm!.!var3!.VISIBLE := TRUE;
+END ELSE BEGIN
+  !currForm!.!var2!.EDITABLE := TRUE;
+  !currForm!.!var2!.VISIBLE := TRUE;
+  !currForm!.!var3!.EDITABLE := FALSE;
+  !currForm!.!var3!.VISIBLE := FALSE;
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+<moveToTrigger>
+OnAfterGetRecord
+<moveCodeToTrigger>
+!currForm!.!var2!.EDITABLE := !var1! <> 0;
+!currForm!.!var3!.EDITABLE := !var1! = 0;
+
+<find>
+!currForm!.ItemPanel.VISIBLE := Type = Type::Item;
+<atTrigger>
+OnAfterGetCurrRecord
+<replace>
+;
+
+<find>
+UpdateInfoPanel;
+<atTrigger>
+OnAfterGetCurrRecord
+<replace>
+;
+
+<find>
+InfopaneEnable("Service Item No." <> '');
+<atTrigger>
+OnAfterGetCurrRecord
+<replace>
+;
+
+<find>
+InfopaneEnable((Type = Type::Item)AND("No." <> ''));
+<atTrigger>
+OnAfterGetCurrRecord
+<replace>
+;
+
+<find>
+BEGIN 
+  SETRANGE(Code); 
+END;
+<atTrigger>
+OnAfterGetCurrRecord
+<replace>
+;
+
+<find>
+BEGIN 
+  SNAvailabilityActive := TRUE;
+END;
+<atTrigger>
+OnActivate
+<replace>
+;
+
+<find>
+BEGIN 
+  LotAvailabilityActive := TRUE;
+END;
+<atTrigger>
+OnActivate
+<replace>
+;
+
+<find>
+BEGIN 
+  SNAvailabilityActive := FALSE;
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+<find>
+BEGIN 
+  LotAvailabilityActive := FALSE;
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+<find>
+BEGIN
+  !currForm!.UPDATE;
+END;
+<atTrigger>
+OnTimer
+<replace>
+;
+
+<find>
+BEGIN 
+  ActivateFields;
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+<moveToTrigger>
+OnAfterGetRecord
+<moveCodeToTrigger>
+ActivateFields;
+
+<find>
+BEGIN 
+  !currForm!.UPDATE;
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+<find>
+BEGIN 
+  !currForm!.UPDATE(TRUE);
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+<find>
+BEGIN 
+  GetVATSpecification;
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+<find>
+BEGIN   
+  GetVATSpecification;
+  UpdateHeaderServLine;
+END;
+<atTrigger>
+OnDeactivate
+<replace>
+;
+
+
+<find>
+BEGIN 
+  IF "No." = PrevNo THEN
+    GetVATSpecification;
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN 
+  !currForm!.UPDATE;
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN 
+  !currForm!.UPDATE(FALSE);
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN 
+  CalcCheck;
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN
+  SETRANGE("Date Filter",0D,WORKDATE - 1);
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN
+  IF (WORKDATE <> NewWorkDate) AND (NewWorkDate <> 0D) THEN
+    CurrForm.UPDATE(FALSE);
+  NewWorkDate := WORKDATE;
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN
+  UpdateButtons;
+  CurrForm.UPDATE(FALSE);
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN
+  SetCalendarCode(CurrentCalendarCode);
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN
+  SetCalendarCode(!var!,!var!,!var!,!var!);
+END;
+<atTrigger>
+OnActivateForm
+<replace>
+;
+
+<find>
+BEGIN
+  UpdateGLAccName(!var!);
+END;
+<replace>
+;
+<atTrigger>
+OnActivate
+
+<find>
+BEGIN
+  UpdateAccNameAndCode(!var!);
+END;
+<replace>
+;
+<atTrigger>
+OnActivate
+
+<find>
+BEGIN
+  CurrPage.UPDATE;
+END;
+<replace>
+;
+<atTrigger>
+OnActivate
+
+<find>
+BEGIN
+  ItemJnlMgt.OnAfterInputItemNo(Text);
+END;
+<atTrigger>
+OnAfterInput
+<replace>
+;
+
+<find>
+BEGIN
+  UpdateBalance;  
+END;
+<atTrigger>
+OnBeforePutRecord
+<replace>
+;
+
+<find>
+BEGIN
+  UpdateStatisticalValue;  
+END;
+<atTrigger>
+OnBeforePutRecord
+<replace>
+;
+
+<find>
+BEGIN
+  UpdateAllocationPct;  
+END;
+<atTrigger>
+OnBeforePutRecord
+<replace>
+;
+
+<find>
+BEGIN
+  UpdateAllocationAmount;  
+END;
+<atTrigger>
+OnBeforePutRecord
+<replace>
+;
+
+<find>
+!currForm!.!var!.XPOS := !var!;
+<replace>
+;
+
+<find>
+!currForm!.!var!.YPOS := !var!;
+<replace>
+;
+
+<find>
+!currForm!.UPDATECONTROLS;
+<replace>
+;
+<comment>
+138 matches
+
+<find>
+!currForm!.!var!.UPDATE;
+<replace>
+;
+
+<find>
+!currForm!.!var1!.VISIBLE :=
+<declareVariable>
+!var1!Visible
+<declareVariableType>
+Boolean INDATASET
+<replace>
+!declaredVariable! :=
+<moveValueToProperty>
+!declaredVariable!
+<movePropertyToControlName>
+!var1!
+<moveToProperty>
+Visible
+<comment>
+101 matches
+
+<find>
+!currForm!.!var1!.VISIBLE THEN
+<replace>
+!declaredVariable! THEN
+<declareVariable>
+!var1!Visible
+<declareVariableType>
+Boolean INDATASET
+<moveValueToProperty>
+!declaredVariable!
+<movePropertyToControlName>
+!var1!
+<moveToProperty>
+Visible
+
+<find>
+!currForm!.!var1!.VISIBLE;
+<replace>
+!declaredVariable!;
+<declareVariable>
+!var1!Visible
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2!
+
+<find>
+!currForm!.!var1!.VISIBLE(NOT !var2!)
+<replace>
+!currForm!.!var1!.VISIBLE := NOT !var2!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! = !var3!::!var4!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! = !var3!::!var4!
+<comment>
+2 matches
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2!(!var3!) = !var4!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2!(!var3!) = !var4!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2!(!var3!) <> !var4!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2!(!var3!) <> !var4!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! <> !var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! <> !var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! = !var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! = !var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! AND (!var3! = !var4!::!var5!))
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! AND (!var3! = !var4!::!var5!)
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! AND !var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! AND !var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(NOT !var2!.!var3!.!var4!)
+<replace>
+!currForm!.!var1!.VISIBLE := NOT !var2!.!var3!.!var4!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! * !var3![!var4!] < !var5!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! * !var3![!var4!] < !var5!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var3![!var4!] <> !var5!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var3![!var4!] <> !var5!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! AND !var3!.!var4!.!var5!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! AND !var3!.!var4!.!var5!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! >= !var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! >= !var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2! <= !var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2! <= !var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(!var2!.!var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := !var2!.!var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(NOT !var2!.!var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := NOT !var2!.!var3!
+
+<find>
+!currForm!.!var1!.VISIBLE(GETFILTER(!var2!)=!var3!)
+<replace>
+!currForm!.!var1!.VISIBLE := GETFILTER(!var2!)=!var3!
+
+<find>
+CurrForm.VISIBLE(!var1!)
+<replace>
+CurrForm.EDITABLE(!var1!)
+
+<find>
+CurrForm.VISIBLE :=
+<replace>
+CurrForm.EDITABLE :=
+
+<find>
+!currForm!.!var1!.EDITABLE :=
+<declareVariable>
+!var1!Editable
+<declareVariableType>
+Boolean INDATASET
+<replace>
+!declaredVariable! :=
+<moveValueToProperty>
+!declaredVariable!
+<movePropertyToControlName>
+!var1!
+<moveToProperty>
+Editable
+<comment>
+101 matches
+
+<find>
+!currForm!.!var1!.EDITABLE THEN
+<replace>
+!declaredVariable! THEN
+<declareVariable>
+!var1!Editable
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.EDITABLE;
+<replace>
+!declaredVariable!;
+<declareVariable>
+!var1!Editable
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2!
+<comment>
+116 matches
+
+<find>
+!currForm!.!var1!.EDITABLE(NOT !var2!)
+<replace>
+!currForm!.!var1!.EDITABLE := NOT !var2!
+<comment>
+
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2! = !var3!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2! = !var3!
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2!.!var3! = !var4!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2!.!var3! = !var4!
+
+<find>
+!currForm!.!var1!.EDITABLE(NOT !var2!);
+<replace>
+!currForm!.!var1!.EDITABLE := NOT !var2!;
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  !var2! AND (!var3! = !var4!::!var5!) AND (!var6! = !var7!::!var8!))
+<replace>
+!currForm!.!var1!.EDITABLE := 
+  !var2! AND (!var3! = !var4!::!var5!) AND (!var6! = !var7!::!var8!)
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2! = !var3!::!var4!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2! = !var3!::!var4!
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  (!var2! <> !var3!::!var4!) OR
+  (!var5! <> !var6!::!var7!) OR
+  ((!var8! <> !var9!::!var10!) AND (!var11! <> !var12!::!var13!)))
+<replace>
+!currForm!.!var1!.EDITABLE :=
+  (!var2! <> !var3!::!var4!) OR
+  (!var5! <> !var6!::!var7!) OR
+  ((!var8! <> !var9!::!var10!) AND (!var11! <> !var12!::!var13!))
+
+
+<find>
+!currForm!.!var1!.EDITABLE(!currForm!.!var2!.EDITABLE);
+<replace>
+!currForm!.!var1!.EDITABLE := !currForm!.!var2!.EDITABLE;
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  (!var2! = !var3!::!var4!) OR (!var5! = !var6!::!var7!))
+<replace>
+!currForm!.!var1!.EDITABLE :=
+  (!var2! = !var3!::!var4!) OR (!var5! = !var6!::!var7!)
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2! = !var3!::!var4!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2! = !var3!::!var4!
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2! < !var3!::!var4!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2! < !var3!::!var4!
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2! <> !var3!::!var4!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2! <> !var3!::!var4!
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  (!var2! = !var3!::!var4!) !var5! (!var6! = !var7!))
+<replace>
+!currForm!.!var1!.EDITABLE :=
+  (!var2! = !var3!::!var4!) !var5! (!var6! = !var7!)
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  (!var2! = !var3!::!var4!) !var5! (!var6! <> !var7!))
+<replace>
+!currForm!.!var1!.EDITABLE :=
+  (!var2! = !var3!::!var4!) !var5! (!var6! <> !var7!)
+
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  NOT ((!var2! = !var3!::!var4!) OR (!var5! < !var6!)))
+<replace>
+!currForm!.!var1!.EDITABLE :=
+  NOT ((!var2! = !var3!::!var4!) OR (!var5! < !var6!))
+
+<find>
+!currForm!.!var1!.EDITABLE(
+  (!var2!(!var3!) = !var4!) AND (!var5!(!var6!) = !var7!))
+<replace>
+!currForm!.!var1!.EDITABLE :=
+  (!var2!(!var3!) = !var4!) AND (!var5!(!var6!) = !var7!)
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2!(!var3!) = !var4!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2!(!var3!) = !var4!
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2!.!var3! < !var4!.!var5!::!var6!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2!.!var3! < !var4!.!var5!::!var6!
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2!.!var3! <> !var4!.!var5!::!var6!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2!.!var3! <> !var4!.!var5!::!var6!
+
+<find>
+!currForm!.!var1!.EDITABLE(!var2!.!var3! = !var4!.!var5!::!var6!)
+<replace>
+!currForm!.!var1!.EDITABLE := !var2!.!var3! = !var4!.!var5!::!var6!
+
+<find>
+!currForm!.!var!.FORM.EDITABLE := !var!;
+<replace>
+;
+
+<find>
+!currForm!.!var1!.ENABLED :=
+<declareVariable>
+!var1!Enable
+
+<declareVariableType>
+Boolean INDATASET
+<replace>
+!declaredVariable! :=
+<moveValueToProperty>
+!declaredVariable!
+<movePropertyToControlName>
+!var1!
+<moveToProperty>
+Enabled
+<comment>
+
+<find>
+!currForm!.!var1!.ENABLED THEN
+<replace>
+!declaredVariable! THEN
+<declareVariable>
+!var1!Enable
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! IN [0,1]);
+<replace>
+!currForm!.!var1!.ENABLED := !var2! IN [0,1];
+
+<find>
+!currForm!.!var1!.ENABLED(NOT (!var2! IN [!var2!::!var3!,!var2!::!var4!]));
+<replace>
+!currForm!.!var1!.ENABLED := NOT (!var2! IN [!var2!::!var3!,!var2!::!var4!]);
+
+<find>
+IF !currForm!.!var1!.ENABLED =
+<replace>
+IF !declaredVariable! =
+<declareVariable>
+!var1!Enable
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.ENABLED;
+<replace>
+!declaredVariable!;
+<declareVariable>
+!var1!Enable
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.ENABLED:
+<replace>
+!declaredVariable!:
+<declareVariable>
+!var1!Enable
+<declareVariableType>
+Boolean INDATASET
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! = !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! = !var3!
+
+<find>
+!currForm!.!var1!.ENABLED(NOT !var2!)
+<replace>
+!currForm!.!var1!.ENABLED := NOT !var2!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! > !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! > !var3!
+
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!.!var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2!.!var3!
+
+<find>
+!currForm!.!var1!.ENABLED((!var2! = !var3!::!var4!))
+<replace>
+!currForm!.!var1!.ENABLED := (!var2! = !var3!::!var4!)
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!.!var3! <> !var4!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2!.!var3! <> !var4!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!.!var3!(!var4!,!var5!,!var6!))
+<replace>
+!currForm!.!var1!.ENABLED := !var2!.!var3!(!var4!,!var5!,!var6!)
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! <> !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! <> !var3!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! = !var3!::!var4!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! = !var3!::!var4!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! = !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! = !var3!
+
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! <> !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! <> !var3!
+
+
+<find>
+!currForm!.!var1!.ENABLED(NOT !var2!.!var3!)
+<replace>
+!currForm!.!var1!.ENABLED := NOT !var2!.!var3!
+
+
+<find>
+!currForm!.!var1!.ENABLED(NOT !var2!)
+<replace>
+!currForm!.!var1!.ENABLED := NOT !var2!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! AND !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! AND !var3!
+
+<find>
+!currForm!.!var1!.ENABLED(NOT !var2! !var3! !var4!)
+<replace>
+!currForm!.!var1!.ENABLED := NOT !var2! !var3! !var4!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! AND NOT !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! AND NOT !var3!
+
+<find>
+!currForm!.!var1!.ENABLED(NOT !var2! AND NOT !var3!)
+<replace>
+!currForm!.!var1!.ENABLED := NOT !var2! AND NOT !var3!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! OR (!var3! AND NOT !var4! AND NOT !var5!))
+<replace>
+!currForm!.!var1!.ENABLED := !var2! OR (!var3! AND NOT !var4! AND NOT !var5!)
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! OR (!var3! AND !var4! AND NOT !var5!))
+<replace>
+!currForm!.!var1!.ENABLED := !var2! OR (!var3! AND !var4! AND NOT !var5!)
+
+<find>
+!currForm!.!var1!.ENABLED(NOT !var2! AND !var3! AND !var4! AND !var5! AND !var6!)
+<replace>
+!currForm!.!var1!.ENABLED := NOT !var2! AND !var3! AND !var4! AND !var5! AND !var6!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!.!var3! <> !var4!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2!.!var3! <> !var4!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!(!var3!) <> !var4!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2!(!var3!) <> !var4!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2! <> !var3!::!var4!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2! <> !var3!::!var4!
+
+<find>
+!currForm!.!var1!.ENABLED(!var2!.!var3! = !var4!.!var5!::!var6!)
+<replace>
+!currForm!.!var1!.ENABLED := !var2!.!var3! = !var4!.!var5!::!var6!
+
+<find>
+!currForm!.!var!.ACTIVATE;
+<replace>
+;
+<comment>
+51 matches
+
+<find>
+THEN !currForm!.!var!.ACTIVATE
+<replace>
+THEN BEGIN END
+
+<find>
+;!currForm!.!var!.ACTIVATE
+<replace>
+;
+
+<find>
+!currForm!.!var!.UPDATEEDITABLE(!var! = !var!::!var!);
+<replace>
+;
+
+
+<find>
+IF !var1! <> !var1!::!var2! THEN
+  !currForm!.!var3!.UPDATEFONTBOLD := TRUE;
+<replace>
+!currForm!.!var3!.UPDATEFONTBOLD := !var1! <> !var1!::!var2!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD :=
+<declareVariable>
+!var1!Emphasize
+<declareVariableType>
+Boolean INDATASET
+<replace>
+!declaredVariable! :=
+<comment>
+
+<find>
+!currForm!.!var!.UPDATEFONTBOLD(!var![!var!] > 0);
+<replace>
+;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2!) 
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2!
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2! OR !var3!.!var4!.!var5!.!var6!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2! OR !var3!.!var4!.!var5!.!var6!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2!.!var3!.!var4!.!var5!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2!.!var3!.!var4!.!var5!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2! <> !var3!::!var4!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2! <> !var3!::!var4!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2! = !var3!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2! = !var3!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2! > !var3!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2! > !var3!;
+
+<find>
+!currForm!.!var1!.UPDATEFONTBOLD(!var2! = !var3!::!var4!);
+<replace>
+!currForm!.!var1!.UPDATEFONTBOLD := !var2! = !var3!::!var4!;
+
+<find>
+!currForm!.!var1!.UPDATEFORECOLOR := !var2!;
+<replace>
+!currForm!.!var1!.UPDATEFORECOLOR(!var2!);
+
+<find>
+THEN !currForm!.!var!.UPDATEFORECOLOR(!var!)
+<replace>
+THEN BEGIN END
+
+<find>
+!currForm!.!var!.UPDATEFORECOLOR(!var!);
+<replace>
+;
+
+<find>
+!currForm!.!var!.UPDATEFORECOLOR(!var![!var!]);
+<replace>
+;
+
+<find>
+IF Level > 0 THEN
+  !currForm!.!var1!.UPDATEINDENT := !var2! + !var3!;
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! + !var3!;
+
+<find>
+IF !var1! > 0 THEN
+  !currForm!.!var2!.UPDATEINDENT := !var1! * 220;
+<replace>
+!currForm!.!var2!.UPDATEINDENT := !var1! * 220;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT(220);
+<replace>
+!currForm!.!var1!.UPDATEINDENT := 1;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := 220;
+<replace>
+!currForm!.!var1!.UPDATEINDENT := 1;
+ 
+<find>
+!currForm!.!var1!.UPDATEINDENT := !var2! * 220;
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2!;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := 220 * !var2!;
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! * 220;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT(220 * !var2!);
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! * 220;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT(!var2! * 220);
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! * 220;
+
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := (!var2! + !var3!) * !var4!;
+<atTrigger>
+OnFormat
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! + !var3!;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := ((!var2! + !var3!) * !var4!);
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! + !var3!;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := (!var2! - !var3!) * !var4!;
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! - !var3!;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := ((!var2! - !var3!) * !var4!);
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! - !var3!;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := !var2! * (!var3! - !var4!);
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var3! - !var4!;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT := (!var2! - 1) * 110;
+<replace>
+!currForm!.!var1!.UPDATEINDENT := !var2! - 1;
+
+<find>
+!currForm!.!var1!.UPDATEINDENT :=
+<replace>
+!declaredVariable! :=
+<declareVariable>
+!var1!Indent
+<declareVariableType>
+Integer INDATASET
+<moveValueToProperty>
+!declaredVariable!
+<movePropertyToControlName>
+!var1!
+<moveToProperty>
+IndentationColumnName
+
+<find>
+!currForm!.!var!.HEIGHT := !var!.!var! - !var! ELSE
+<replace>
+BEGIN END ELSE
+
+<find>
+!currForm!.!var!.HEIGHT := !var!.!var!;
+<replace>
+;
+
+<find>
+IF !currForm!.!var!.FORM.IsActive THEN;
+<replace>
+;
+
+<find>
+PROCEDURE IsActive@!var!() : Boolean;
+BEGIN
+  EXIT(!currForm!.ACTIVE);
+END;
+<replace>
+
+<find>
+IF !currForm!.ACTIVE THEN;
+<replace>
+;
+
+<find>
+!currForm!.!var1!.XPOS(!var2!)
+<replace>
+!currForm!.!var1!.XPOS := !var2!
+
+<find>
+!currForm!.!var1!.XPOS(!var2!.!var3!)
+<replace>
+!currForm!.!var1!.XPOS := !var2!.!var3!
+
+<find>
+!currForm!.!var1!.XPOS(!var2!.!var3!.!var4!)
+<replace>
+!currForm!.!var1!.XPOS := !var2!.!var3!.!var4!
+
+<find>
+!currForm!.!var1!.XPOS
+<declareVariable>
+!var1!XPos
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.!var1!.YPOS(!var2!)
+<replace>
+!currForm!.!var1!.YPOS := !var2!
+
+<find>
+!currForm!.!var1!.YPOS(!var2!.!var3!)
+<replace>
+!currForm!.!var1!.YPOS := !var2!.!var3!
+
+<find>
+!currForm!.!var1!.YPOS(!var2!.!var3!.!var4!)
+<replace>
+!currForm!.!var1!.YPOS := !var2!.!var3!.!var4!
+
+<find>
+!currForm!.!var1!.YPOS
+<declareVariable>
+!var1!YPos
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.!var1!.HEIGHT(!var2!)
+<replace>
+!currForm!.!var1!.HEIGHT := !var2!
+
+<find>
+!currForm!.!var1!.HEIGHT(!var2!.!var3!)
+<replace>
+!currForm!.!var1!.HEIGHT := !var2!.!var3!
+
+<find>
+!currForm!.!var1!.HEIGHT(!var2!.!var3!.!var4!)
+<replace>
+!currForm!.!var1!.HEIGHT := !var2!.!var3!.!var4!
+
+<find>
+!currForm!.!var1!.HEIGHT
+<declareVariable>
+!var1!Height
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.!var1!.WIDTH(!var2!)
+<replace>
+!currForm!.!var1!.WIDTH := !var2!
+
+<find>
+!currForm!.!var1!.WIDTH(!var2!.!var3!)
+<replace>
+!currForm!.!var1!.WIDTH := !var2!.!var3!
+
+<find>
+!currForm!.!var1!.WIDTH(!var2!.!var3!.!var4!)
+<replace>
+!currForm!.!var1!.WIDTH := !var2!.!var3!.!var4!
+
+<find>
+!currForm!.!var1!.WIDTH
+<declareVariable>
+!var1!Width
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.XPOS(!var2!)
+<replace>
+!currForm!.XPOS := !var2!
+
+<find>
+!currForm!.XPOS(!var2!.!var3!)
+<replace>
+!currForm!.XPOS := !var2!.!var3!
+
+<find>
+!currForm!.XPOS
+<declareVariable>
+FrmXPos
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.YPOS(!var2!)
+<replace>
+!currForm!.YPOS := !var2!
+
+<find>
+!currForm!.YPOS(!var2!.!var3!)
+<replace>
+!currForm!.YPOS := !var2!.!var3!
+
+<find>
+!currForm!.YPOS 
+<declareVariable>
+FrmYPos
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.HEIGHT(!var1!) 
+<replace>
+!currForm!.HEIGHT := !var1!
+
+<find>
+!currForm!.HEIGHT 
+<declareVariable>
+FrmHeight
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.WIDTH(!var1!) 
+<replace>
+!currForm!.WIDTH := !var1!
+
+<find>
+!currForm!.WIDTH
+<declareVariable>
+FrmWidth
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+!currForm!.LANGUAGE
+<declareVariable>
+FrmLanguage
+<declareVariableType>
+Integer
+<replace>
+!declaredVariable!
+
+<find>
+RequestOptionsForm.ACTIVATE;
+<replace>
+;
+
+<find>
+CurrForm.
+<replace>
+CurrPage.
+
+<find>
+RequestOptionsForm.
+<replace>
+RequestOptionsPage.
+
+<find>
+RequestOptionsPage.!var!.DECIMALPLACESMAX(!var!);
+<replace>
+;
+
+<find>
+CurrPage.!var!.UPDATEINDENT(!var!)
+<replace>
+BEGIN END
+

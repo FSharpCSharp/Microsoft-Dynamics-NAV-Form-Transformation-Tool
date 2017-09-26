@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" targetNamespace="urn:schemas-microsoft-com:dynamics:NAV:ApplicationObjects" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Common.xsd" />
+  <xs:element name="Page" type="PageType" />
+  <xs:complexType name="PageType">
+    <xs:all>
+      <xs:element name="Properties" type="PagePropertiesType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="SourceObject" type="PageSourceObjectType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Triggers" type="PageTriggersType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Actions" type="PageActionsType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Controls" type="PageControlsType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Code" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+    <xs:attributeGroup ref="ObjectAttributes" />
+  </xs:complexType>
+  <xs:complexType name="PagePropertiesType">
+    <xs:all>
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Editable" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Permissions" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TimerUpdate" type="xs:integer" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PageType" type="PageTypeType" minOccurs="0" maxOccurs="1" default="Card" />
+      <xs:element name="InstructionalTextML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CardFormID" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DataCaptionExpr" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DataCaptionFields" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="LinksAllowed" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PopulateAllFields" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SaveValues" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RefreshOnActivate" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageSourceObjectType">
+    <xs:all>
+      <xs:element name="SourceTable" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SourceTableView" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="InsertAllowed" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ModifyAllowed" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DeleteAllowed" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DelayedInsert" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MultipleNewLines" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AutoSplitKey" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SourceTableTemporary" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ChartMeasureSource" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ChartSeriesSource" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ChartDimensionSource" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ChartDimensionRange" type="xs:integer" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DataCaptionFields" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ConfirmDeletion" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageTriggersType">
+    <xs:all>
+      <xs:element name="OnInit" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnOpenPage" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnClosePage" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnQueryClosePage" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnFindRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnNextRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnAfterGetRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnNewRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnInsertRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnModifyRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnDeleteRecord" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageActionsType">
+    <xs:all>
+      <xs:element name="NewDocumentItems" type="PageActionContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActionItems" type="PageActionContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RelatedInformation" type="PageActionContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Reports" type="PageActionContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="HomeItems" type="PageActionContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActivityButtons" type="PageActionContainerType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageActionContainerType">
+    <xs:sequence>
+      <xs:element name="Properties" type="PageActionContainerPropertiesType" minOccurs="1" maxOccurs="1" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ActionGroup" type="PageActionGroupType" maxOccurs="1" />
+        <xs:element name="Action" type="PageActionType" maxOccurs="1" />
+        <xs:element name="Separator" type="PageActionSeparatorType" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PageActionContainerPropertiesType">
+    <xs:all>
+      <xs:element name="ID" type="xs:string" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageActionGroupType">
+    <xs:sequence>
+      <xs:element name="Properties" type="PageActionGroupPropertiesType" minOccurs="1" maxOccurs="1" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ActionGroup" type="PageActionGroupType" maxOccurs="1" />
+        <xs:element name="Action" type="PageActionType" maxOccurs="1" />
+        <xs:element name="Separator" type="PageActionSeparatorType" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PageActionGroupPropertiesType">
+    <xs:all>
+      <xs:element name="ID" type="xs:string" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Visible" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Image" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageActionType">
+    <xs:all>
+      <xs:element name="ID" type="xs:string" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ToolTipML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Image" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Visible" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Promoted" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PromotedCategory" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="New" />
+            <xs:enumeration value="Process" />
+            <xs:enumeration value="Report" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PromotedIsBig" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Ellipsis" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ShortCutKey" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PushAction" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="OK" />
+            <xs:enumeration value="Cancel" />
+            <xs:enumeration value="LookupOK" />
+            <xs:enumeration value="LookupCancel" />
+            <xs:enumeration value="Yes" />
+            <xs:enumeration value="No" />
+            <xs:enumeration value="Close" />
+            <xs:enumeration value="Stop" />
+            <xs:enumeration value="FormHelp" />
+            <xs:enumeration value="RunObject" />
+            <xs:enumeration value="RunSystem" />
+            <xs:enumeration value="LookupTable" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="RunObject" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RunFormView" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RunFormLink" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RunFormOnRec" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RunFormMode" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="View" />
+            <xs:enumeration value="Edit" />
+            <xs:enumeration value="Create" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="InFooterBar" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnAction" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageActionSeparatorType">
+    <xs:all>
+      <xs:element name="ID" type="xs:integer" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="IsHeader" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageControlsType">
+    <xs:all>
+      <xs:element name="ContentArea" type="PageControlContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="FactBoxArea" type="PageControlContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RoleCenterArea" type="PageControlContainerType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DetailsArea" type="PageControlContainerType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageControlContainerType">
+    <xs:sequence>
+      <xs:element name="Properties" type="PageControlContainerPropertiesType" maxOccurs="1" />
+      <xs:element name="ActionGroup" type="PageActionGroupType" minOccurs="0" maxOccurs="1" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Group" type="PageControlGroupType" maxOccurs="1" />
+        <xs:element name="Field" type="PageFieldType" maxOccurs="1" />
+        <xs:element name="Part" type="PagePartType" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PageControlContainerPropertiesType">
+    <xs:all>
+      <xs:element name="ID" type="xs:integer" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageControlGroupType">
+    <xs:sequence>
+      <xs:element name="Properties" type="PageControlGroupPropertiesType" maxOccurs="1" />
+      <xs:element name="ActionGroup" type="PageActionGroupType" minOccurs="0" maxOccurs="1" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Action" type="PageActionType" maxOccurs="1" />
+        <xs:element name="Group" type="PageControlGroupType" maxOccurs="1" />
+        <xs:element name="Field" type="PageFieldType" maxOccurs="1" />
+        <xs:element name="Part" type="PagePartType" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PageControlGroupPropertiesType">
+    <xs:all>
+      <xs:element name="ID" type="xs:integer" maxOccurs="1" />
+      <xs:element name="GroupType" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Group" />
+            <xs:enumeration value="Repeater" />
+            <xs:enumeration value="CueGroup" />
+            <xs:enumeration value="Report" />
+            <xs:enumeration value="FixedLayout" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Visible" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Editable" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="InstructionalTextML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="IndentationColumnName" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="IndentationControls" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ShowAsTree" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageFieldType">
+    <xs:sequence>
+      <xs:element name="Properties" type="PageFieldPropertiesType" maxOccurs="1" />
+      <xs:element name="Triggers" type="PageFieldTriggersType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActionGroup" type="PageActionGroupType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PagePartType">
+    <xs:sequence>
+      <xs:element name="Properties" type="PagePartPropertiesType" maxOccurs="1" />
+      <xs:element name="Triggers" type="PagePartTriggersType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActionGroup" type="PageActionGroupType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PageFieldPropertiesType">
+    <xs:all>
+      <xs:element name="ID" type="xs:integer" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Visible" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Editable" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="HideValue" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MultiLine" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ToolTipML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OptionCaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DecimalPlaces" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Title" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MinValue" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MaxValue" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="NotBlank" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CharAllowed" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ValuesAllowed" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Style" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="None" />
+            <xs:enumeration value="Strong" />
+            <xs:enumeration value="Attention" />
+            <xs:enumeration value="Favorable" />
+            <xs:enumeration value="Unfavorable" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="StyleExpr" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="BlankNumbers" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="DontBlank" />
+            <xs:enumeration value="BlankNeg" />
+            <xs:enumeration value="BlankNegAndZero" />
+            <xs:enumeration value="BlankZero" />
+            <xs:enumeration value="BlankZeroAndPos" />
+            <xs:enumeration value="BlankPos" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="BlankZero" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AutoFormatType" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AutoFormatExpr" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SourceExpr" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TableRelation" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ShowAsRadioButton" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <!-- What do these properties do? -->
+      <xs:element name="EnabledIfRecUndef" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EnabledIfError" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EnabledIfSelection" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Importance" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Standard" />
+            <xs:enumeration value="Promoted" />
+            <xs:enumeration value="Additional" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ExtendedDataType" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Phone No." />
+            <xs:enumeration value="URL" />
+            <xs:enumeration value="E-Mail" />
+            <xs:enumeration value="Ratio" />
+            <xs:enumeration value="Masked" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!-- Do we now have physical properties in the client?!?! -->
+      <xs:element name="LayoutOptions" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionClass" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SkipOnTab" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DrillDownFormID" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="LookupFormID" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Lookup" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DrillDown" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AssistEdit" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ClosingDates" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Numeric" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DateFormula" type="NavBoolType" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PagePartPropertiesType">
+    <xs:all>
+      <xs:element name="ID" type="xs:integer" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Visible" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Editable" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CaptionML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ToolTipML" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PartType" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Page" />
+            <xs:enumeration value="System" />
+            <xs:enumeration value="Chart" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PagePartID" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SystemPartID" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Outlook" />
+            <xs:enumeration value="Notes" />
+            <xs:enumeration value="MyNotes" />
+            <xs:enumeration value="RecordLinks" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ChartPartID" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SubFormView" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SubFormLink" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ProviderId" type="xs:integer" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PageFieldTriggersType">
+    <xs:all>
+      <xs:element name="OnValidate" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnLookup" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnDrillDown" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnAssistEdit" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PagePartTriggersType">
+    <xs:all>
+      <xs:element name="OnValidate" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnLookup" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnDrillDown" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OnAssistEdit" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+</xs:schema>

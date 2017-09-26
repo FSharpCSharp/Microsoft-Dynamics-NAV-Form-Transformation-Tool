@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CanNotDeleteTmpFile" xml:space="preserve">
+    <value>There is some problem with temporary xml file. You can ignore it if no problems with file validation. {0}</value>
+  </data>
+  <data name="CanNotFindNode" xml:space="preserve">
+    <value>Can't find node {0}. Default {1} will not be applied.</value>
+  </data>
+  <data name="CanNotFindSubform" xml:space="preserve">
+    <value>Can't find {0} sub-form ID # {1}</value>
+  </data>
+  <data name="CannotGetMlCaption" xml:space="preserve">
+    <value>Not possible to get localized caption for {0}{1}:</value>
+  </data>
+  <data name="CantFindXorY" xml:space="preserve">
+    <value>Can't find XPos or YPos node</value>
+  </data>
+  <data name="CantValidateSchema" xml:space="preserve">
+    <value>Some input file can’t be validated by schema. Please, correct it and rerun tool again</value>
+  </data>
+  <data name="CheckParentlessLabel" xml:space="preserve">
+    <value>Parentless label. Form contains {0} controls which can be recognized as parents for parentless label (id {1}). CaptionML will be copied to first of them. Please, check it manually</value>
+  </data>
+  <data name="CommandButtonWillBeMovedToActionGroup" xml:space="preserve">
+    <value>CommandButton {0} will be moved to action group</value>
+  </data>
+  <data name="CommentControlRemovalNewLongDescription" xml:space="preserve">
+    <value>{0}. {1}</value>
+  </data>
+  <data name="ControlWillBeRemoved" xml:space="preserve">
+    <value>{0} control &lt;{1}&gt; will be removed.</value>
+  </data>
+  <data name="ControlWithTableRelationAndValidateTableRelationEqualNo" xml:space="preserve">
+    <value>Control (ID {0}) with TableRelation and ValidateTableRelation='No' found.</value>
+  </data>
+  <data name="CouldNotSave" xml:space="preserve">
+    <value>Could not save {0}</value>
+  </data>
+  <data name="DeepMenuStructure" xml:space="preserve">
+    <value>Please, change this form's menu structure. Any form shouldn't have more than 2 menu levels. This form has at least {0} menu levels. Menu CaptionML: {1}</value>
+  </data>
+  <data name="FileIsNotAWellFormattedXmlDocument" xml:space="preserve">
+    <value>{0} is not a well formatted XML document.</value>
+  </data>
+  <data name="FileLoadError" xml:space="preserve">
+    <value>Could not load {0}</value>
+  </data>
+  <data name="Form" xml:space="preserve">
+    <value>Form {0}: {1}</value>
+  </data>
+  <data name="FormIgnored" xml:space="preserve">
+    <value>Ignored, due to a {0}</value>
+  </data>
+  <data name="HiddenOptionButton" xml:space="preserve">
+    <value>It’s probably hidden option button. Please correct it somehow.</value>
+  </data>
+  <data name="IdAlreadyUsed" xml:space="preserve">
+    <value>ID in the range for new ID already in use.  Range for new ID is set from {0} to {1} but Id {2} already in use on page {3}!</value>
+  </data>
+  <data name="IDNotFound" xml:space="preserve">
+    <value>The ID {0} from the transformation input file, do not exist in the input xml file.</value>
+  </data>
+  <data name="ImportingLocalizedStrings" xml:space="preserve">
+    <value>Importing localized strings. </value>
+  </data>
+  <data name="IncorrectLanguageId" xml:space="preserve">
+    <value>Language id {0} is incorrect.</value>
+  </data>
+  <data name="InPageValueNotSet" xml:space="preserve">
+    <value>InPage value not set for label ID={0}, CaptionML={1}</value>
+  </data>
+  <data name="InstructionalTextSuggestion" xml:space="preserve">
+    <value>Parentless label {0} ("{1}") was found. If this label should be treated as Instructional Text, please mark it as InstructionalTextML in {2}</value>
+  </data>
+  <data name="MatrixLikeLayoutCannotFindControl" xml:space="preserve">
+    <value>MatrixLikeLayout: Can't find control ID {0}. Layout will be generated without this column. Please, add this column manually.</value>
+  </data>
+  <data name="MergeMenuButtons" xml:space="preserve">
+    <value>Merge MenuButtons: MenuButton ID# {2} ({3}) will be merged into MenuButton ID# {0} ({1}). These buttons have the same position: {4}.</value>
+  </data>
+  <data name="MoreThanOneChild" xml:space="preserve">
+    <value>More than one label attached to {0} control (ID {1}) as child. It could be problem with more than one label attached to one control.</value>
+  </data>
+  <data name="MoveCaptionMLtoCaptionClass" xml:space="preserve">
+    <value>CaptionML value ({0}) for control id {1} was moved to variable {2}@{3}. This variable was assigned to CaptionClass property.</value>
+  </data>
+  <data name="MoveMenuButtonsToSubForm" xml:space="preserve">
+    <value>
+//This functionality was copied from page #{0}. Unsupported part was commented. Please check it.
+{{{1}}}
+</value>
+  </data>
+  <data name="NodeWillBeDeleted" xml:space="preserve">
+    <value>Unsupported by ActionGroup node {0} will be deleted</value>
+  </data>
+  <data name="ParentControlDoesNotSupportControlTypeProperty" xml:space="preserve">
+    <value>Label {0}. Parent control doesn't support ControlType property. Label properties will be ignored.</value>
+  </data>
+  <data name="ParentControlDoesNotSupportControlTypePropertySuggestion" xml:space="preserve">
+    <value>Check if parent control property for this label was set correctly or it can be a grouping.</value>
+  </data>
+  <data name="ParentControlIsAController" xml:space="preserve">
+    <value>Label {0}. Parent control is a container. Label properties will be ignored.</value>
+  </data>
+  <data name="ParentControlIsAControllerSuggestion" xml:space="preserve">
+    <value>Check if parent control property for this label was set correctly.</value>
+  </data>
+  <data name="ParentControlNotSet" xml:space="preserve">
+    <value>Label {0}. Parent control wasn't set.</value>
+  </data>
+  <data name="ParentControlPropertyWillBeChangedToLabelProperty" xml:space="preserve">
+    <value>Label {0}. Parent control property {1} already has assigned value {2}. This value will be changed to label property value: {3}.</value>
+  </data>
+  <data name="PasswordText" xml:space="preserve">
+    <value>Control with property password has been transformed into a masked text extended data type. This is not a secure solution. If this control is going to be used for entering passwords or other secure data you have to develop a secure solution to support this.</value>
+  </data>
+  <data name="PictureBoxRelatedToCommentButton" xml:space="preserve">
+    <value>PictureBox related to Comment Button</value>
+  </data>
+  <data name="PropertyName" xml:space="preserve">
+    <value>Property {0} of</value>
+  </data>
+  <data name="PropertyWillBeIgnored" xml:space="preserve">
+    <value>Label {0}. Property {1} will be ignored.</value>
+  </data>
+  <data name="RemoveCommentButton" xml:space="preserve">
+    <value>The Comment Buttons: CommandButton (ID {0}) and PictureBox controls (ID {1}) will be removed by BitmapList='7,6'.</value>
+  </data>
+  <data name="RenameVariable" xml:space="preserve">
+    <value>Variable &lt;{0}&gt; will be renamed to &lt;{1}&gt;</value>
+  </data>
+  <data name="RunTransformationError" xml:space="preserve">
+    <value>Some error occurred while transforming form #{0}</value>
+  </data>
+  <data name="StepActionsFinalProcessing" xml:space="preserve">
+    <value>Final actions processing...</value>
+  </data>
+  <data name="StepAddDefaultProperties" xml:space="preserve">
+    <value>Add default properties...</value>
+  </data>
+  <data name="StepAddSortedControls" xml:space="preserve">
+    <value>Add Sorted controls......</value>
+  </data>
+  <data name="StepAlignConfirmationDialogs" xml:space="preserve">
+    <value>Aligning confirmation dialogs...</value>
+  </data>
+  <data name="StepAligningControls" xml:space="preserve">
+    <value>Align controls.....</value>
+  </data>
+  <data name="StepCleanProperties" xml:space="preserve">
+    <value>Clean Properties.....</value>
+  </data>
+  <data name="StepCleanTriggerNode" xml:space="preserve">
+    <value>Clean Trigger Node.....</value>
+  </data>
+  <data name="StepCodeTransformation" xml:space="preserve">
+    <value>CodeTransformation.....</value>
+  </data>
+  <data name="StepCreateBands" xml:space="preserve">
+    <value>Create Bands.....</value>
+  </data>
+  <data name="StepCreateSourceObject" xml:space="preserve">
+    <value>Create SourceObject.....</value>
+  </data>
+  <data name="StepDeleteLabels" xml:space="preserve">
+    <value>Delete Labels...</value>
+  </data>
+  <data name="StepFinalizeControlsProcessing" xml:space="preserve">
+    <value>Finalize Controls processing....</value>
+  </data>
+  <data name="StepGetSortedControls" xml:space="preserve">
+    <value>Get Sorted controls......</value>
+  </data>
+  <data name="StepLogExtraInformation" xml:space="preserve">
+    <value>Log extra information...</value>
+  </data>
+  <data name="StepManageControlType" xml:space="preserve">
+    <value>Manage Controltype.....</value>
+  </data>
+  <data name="StepManageFixedLayout" xml:space="preserve">
+    <value>Manage FixedLayout.....</value>
+  </data>
+  <data name="StepManageLabels" xml:space="preserve">
+    <value>Manage Labels.....</value>
+  </data>
+  <data name="StepManageOptionButtons" xml:space="preserve">
+    <value>Manage Option Buttons.....</value>
+  </data>
+  <data name="StepMoveCommandButtons" xml:space="preserve">
+    <value>Move CommandButtons.....</value>
+  </data>
+  <data name="StepMoveElementsFromPropertiesToTriggerNode" xml:space="preserve">
+    <value>Move Elements From Properties To TriggerNode.....</value>
+  </data>
+  <data name="StepMoveMenuButtons" xml:space="preserve">
+    <value>Move MenuButtons.....</value>
+  </data>
+  <data name="StepMoveUntouchedControls" xml:space="preserve">
+    <value>Move untouched controls.....</value>
+  </data>
+  <data name="StepNesting" xml:space="preserve">
+    <value>Nesting......</value>
+  </data>
+  <data name="StepRemoveDuplicatedMenuButton" xml:space="preserve">
+    <value>Remove Duplicated Menu Button...</value>
+  </data>
+  <data name="StepRemoveUnsupportedActions" xml:space="preserve">
+    <value>Remove unsupported actions.....</value>
+  </data>
+  <data name="SummarizeCodeTransformationAction" xml:space="preserve">
+    <value>{0} matches found of : {1}</value>
+  </data>
+  <data name="TextBoxAsLabel" xml:space="preserve">
+    <value>TextBox as Label found (by {0}). TextBox ID {1} recognized as Label. Source Expression ({2}) moved to CaptionClass of control ID {3}.</value>
+  </data>
+  <data name="TextBoxAsLabelByParentChild" xml:space="preserve">
+    <value>parent-child relation</value>
+  </data>
+  <data name="TextBoxAsLabelByPosition" xml:space="preserve">
+    <value>X/Y position</value>
+  </data>
+  <data name="TextBoxAsLabelBywidth" xml:space="preserve">
+    <value>width</value>
+  </data>
+  <data name="TextBoxAsLabelProbably" xml:space="preserve">
+    <value>TextBox as Label probably found. TextBox ID {0} (Source Expression: {1}) can be recognized as Label. {2} controls can be parent of this control. Please, create correct parent-child relations and run Transformation tool one more time.</value>
+  </data>
+  <data name="TriggerCanNotBeConvertedAutomatically" xml:space="preserve">
+    <value>Trigger can't be converted automatically</value>
+  </data>
+  <data name="TriggerConvertedAutomatically" xml:space="preserve">
+    <value>Trigger will be converted automatically. Please check it manually.</value>
+  </data>
+  <data name="UnknownNode" xml:space="preserve">
+    <value>Unknown node '{0}' in {1}</value>
+  </data>
+  <data name="UnknownShortcut" xml:space="preserve">
+    <value>Unknown shortcut '{0}'</value>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>The validation for {0} failed. Detailed Information: LineNumber={1}, LinePosition={2}</value>
+  </data>
+  <data name="TransformationFinished" xml:space="preserve">
+    <value>---- Transformation finished {0}. Duration {1} sec ----</value>
+  </data>
+  <data name="AddCaptionMl" xml:space="preserve">
+    <value>You should add CaptionML element to this node: {0}</value>
+  </data>
+  <data name="TransformationStarted" xml:space="preserve">
+    <value>------------ Transformation started at {0} ------------</value>
+  </data>
+  <data name="IncorrectEncodingPage" xml:space="preserve">
+    <value>Incorrect/unsupported encoding page: {0}. For more information regarding encoding page, please, refer to http://msdn.microsoft.com/en-us/library/system.text.encoding.aspx page.</value>
+  </data>
+  <data name="UnsupportedProperty" xml:space="preserve">
+    <value>Property or method {0} may not be supported in the RoleTailored client. The following code may not be compiled:
+{1}
+Analyze your code and add a new rule to the CodeRules.txt file if necessary.</value>
+  </data>
+  <data name="RequestPageIsAlreadyExists" xml:space="preserve">
+    <value>Report {0} already has a request page. Remove it first.</value>
+  </data>
+</root>
